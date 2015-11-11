@@ -1,6 +1,5 @@
 demo
 dist
-src
 test
 .gitignore
 .jshintrc
