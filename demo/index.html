@@ -61,7 +61,8 @@ var App = React.createClass({
       ccv: '',
       plate: '',
       escaped: '',
-      custom: ''
+      custom: '',
+      cvcPattern: '111',
     }
   },
 
@@ -69,6 +70,12 @@ var App = React.createClass({
     var stateChange = {}
     stateChange[e.target.name] = e.target.value
     this.setState(stateChange)
+  },
+
+  getNewCvcPattern() {
+    this.setState({
+      cvcPattern: '1111',
+    });
   },
 
   render() {
@@ -86,7 +93,8 @@ var App = React.createClass({
       </div>
       <div className="form-field">
         <label htmlFor="ccv">CCV:</label>
-        <MaskedInput pattern="111" name="ccv" id="ccv" onChange={this._onChange}/>
+        <MaskedInput value={this.state.ccv} placeholder={this.state.cvcPattern} pattern={this.state.cvcPattern} name="ccv" id="ccv" onChange={this._onChange}/>
+        <button onClick={this.getNewCvcPattern}>Make the card an amex</button>
       </div>
       <div className="form-field">
         <label htmlFor="plate">License Plate:</label>
